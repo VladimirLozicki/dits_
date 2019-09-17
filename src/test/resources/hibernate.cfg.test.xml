@@ -12,14 +12,14 @@
         <property name="connection.pool_size">20</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <mapping class="com.devincubator.zamoiski.dits.pojo.entity.Answer"/>
-        <mapping class="com.devincubator.zamoiski.dits.pojo.entity.Question"/>
-        <mapping class="com.devincubator.zamoiski.dits.pojo.entity.Test"/>
-        <mapping class="com.devincubator.zamoiski.dits.pojo.entity.Topic"/>
-        <mapping class="com.devincubator.zamoiski.dits.pojo.entity.Role"/>
-        <mapping class="com.devincubator.zamoiski.dits.pojo.entity.User"/>
-        <mapping class="com.devincubator.zamoiski.dits.pojo.entity.Statistic"/>
-        <mapping class="com.devincubator.zamoiski.dits.pojo.entity.Literature"/>
-        <mapping class="com.devincubator.zamoiski.dits.pojo.entity.Link"/>
+        <mapping class="com.devincubator.project.dits.pojo.entity.Answer"/>
+        <mapping class="com.devincubator.project.dits.pojo.entity.Question"/>
+        <mapping class="com.devincubator.project.dits.pojo.entity.Test"/>
+        <mapping class="com.devincubator.project.dits.pojo.entity.Topic"/>
+        <mapping class="com.devincubator.project.dits.pojo.entity.Role"/>
+        <mapping class="com.devincubator.project.dits.pojo.entity.User"/>
+        <mapping class="com.devincubator.project.dits.pojo.entity.Statistic"/>
+        <mapping class="com.devincubator.project.dits.pojo.entity.Literature"/>
+        <mapping class="com.devincubator.project.dits.pojo.entity.Link"/>
     </session-factory>
 </hibernate-configuration>

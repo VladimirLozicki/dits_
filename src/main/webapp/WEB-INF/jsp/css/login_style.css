@@ -1,0 +1,57 @@
+.main{
+	width: 100%;
+	display: table;
+}
+
+.container{
+	width: 100%;
+	display: table-row;
+	text-align: center;
+}
+
+.login-form{
+	display: table-cell;
+	width: 50%;
+	vertical-align: middle;
+	padding-right: 10%; 
+}
+
+.dev-inc-picture{
+	width: 50%;
+	display: table-cell;
+	padding: 20%;
+	margin: 0 25% 0 25%;
+	display: flex;
+}
+
+.password-field, .login-field{
+	margin: 1%;
+	font-size: 18pt;
+	color: #221383;
+	border-color: black;
+	width: 40%;
+	border-style: solid;
+	border-width: 2pt;
+	box-shadow: 1px 1px 2px 0 #221383;
+}
+
+.submit-button{
+	vertical-align: middle;
+	font-size: 16pt;
+	color: white;
+	background: #221383;
+	border-color: #221383;
+	width: 30%;
+	padding: auto;
+	margin: 1%;
+}
+
+.login-field, .submit-button, .password-field{
+	border-radius: 7px;
+	text-align: center;
+}
+
+img{
+	width: 100%;
+	height: 100%;
+}
