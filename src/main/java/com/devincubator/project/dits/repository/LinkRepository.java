@@ -3,13 +3,12 @@ package com.devincubator.project.dits.repository;
 import com.devincubator.project.dits.repository.query.Query;
 import com.devincubator.project.dits.pojo.entity.Link;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * @author roma.zamoiski@gmail.com
- */
-public class LinkRepository implements Repository<Link> {
+@Repository
+public class LinkRepository implements Repo<Link> {
 
     @Override
     public List<Link> read(Session session) {

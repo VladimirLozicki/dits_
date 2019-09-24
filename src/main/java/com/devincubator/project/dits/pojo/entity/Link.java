@@ -2,9 +2,6 @@ package com.devincubator.project.dits.pojo.entity;
 
 import javax.persistence.*;
 
-/**
- * @author roma.zamoiski@gmail.com
- */
 @Entity
 public class Link {
 
@@ -16,7 +13,8 @@ public class Link {
     @Column
     private String link;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "literatureId")
     private Literature literature;
 
     public Link() {

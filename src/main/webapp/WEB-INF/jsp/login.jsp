@@ -8,7 +8,6 @@
 	<style>
 		<%@include file='css/login_style.css' %>
 	</style>
-	<%--<link rel="stylesheet" href="<c:url value="/WEB-INF/jsp/css/login_style.css"/>" media="screen" type="text/css"/>--%>
 </head>
 <body>
 
@@ -16,13 +15,15 @@
 
 	<div class="main">
 		<div class="container">
+
 			<div class="dev-inc-picture">
 				<img src="resources/images/devincpicture.png" alt="incubating">
 			</div>
 			<div class="login-form">
-				<form name="login" action="login" method="post">
-					<input class="login-field" type="text" name="login" placeholder="Логин"><br>
-					<input class="password-field" type="password" name="password" placeholder="Пароль"><br>
+				<c:url value="/j_spring_security_check" var="loginUrl"/>
+				<form action="${loginUrl}" method="post">
+					<input class="login-field" type="text" name="j_username" placeholder="Логин"><br>
+					<input class="password-field" type="password" name="j_password" placeholder="Пароль"><br>
 					<input class="submit-button" type="submit" value="Войти">
 				</form>
 			</div>

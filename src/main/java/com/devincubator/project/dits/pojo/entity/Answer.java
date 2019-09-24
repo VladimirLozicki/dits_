@@ -2,9 +2,6 @@ package com.devincubator.project.dits.pojo.entity;
 
 import javax.persistence.*;
 
-/**
- * @author roma.zamoiski@gmail.com
- */
 @Entity
 public class Answer {
 
@@ -19,7 +16,8 @@ public class Answer {
     @Column
     private Boolean correct;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "questionId")
     private Question question;
 
     public Answer() {

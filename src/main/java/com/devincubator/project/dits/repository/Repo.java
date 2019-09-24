@@ -4,10 +4,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-/**
- * @author roma.zamoiski@gmail.com
- */
-public interface Repository<T> {
+public interface Repo<T> {
 
     default void create(T t, Session session){
 

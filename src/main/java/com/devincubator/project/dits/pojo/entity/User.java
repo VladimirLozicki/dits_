@@ -1,11 +1,10 @@
 package com.devincubator.project.dits.pojo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
-/**
- * @author roma.zamoiski@gmail.com
- */
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
@@ -17,7 +16,7 @@ public class User {
     private String firstName;
 
     @Column
-    private String secondName;
+    private String lastName;
 
     @Column
     private String login;
@@ -25,15 +24,19 @@ public class User {
     @Column
     private Integer password;
 
-    @OneToOne
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "roleId")
     private Role role;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<Statistic> statistics;
 
     public User() {
     }
 
-    public User(String firstName, String secondName, String login, Integer password, Role role) {
+    public User(String firstName, String lastName, String login, Integer password, Role role) {
         this.firstName = firstName;
-        this.secondName = secondName;
+        this.lastName = lastName;
         this.login = login;
         this.password = password;
         this.role = role;
@@ -47,12 +50,12 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setLastName(String secondName) {
+        this.lastName = secondName;
     }
 
     public String getLogin() {
@@ -77,5 +80,17 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<Statistic> getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(List<Statistic> statistics) {
+        this.statistics = statistics;
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 }

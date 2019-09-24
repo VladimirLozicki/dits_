@@ -1,11 +1,9 @@
 package com.devincubator.project.dits.pojo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
-/**
- * @author roma.zamoiski@gmail.com
- */
 @Entity
 public class Topic {
 
@@ -20,12 +18,23 @@ public class Topic {
     @Column
     private String name;
 
+    @OneToMany(mappedBy = "topic", fetch = FetchType.EAGER)
+    private List<Test> tests;
+
     public Topic() {
     }
 
     public Topic(String description, String name) {
         this.description = description;
         this.name = name;
+    }
+
+    public List<Test> getTests() {
+        return tests;
+    }
+
+    public void setTests(List<Test> tests) {
+        this.tests = tests;
     }
 
     public String getDescription() {
@@ -42,25 +51,5 @@ public class Topic {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Topic topic = (Topic) o;
-
-        if (!Objects.equals(topicId, topic.topicId)) return false;
-        if (!Objects.equals(description, topic.description)) return false;
-        return Objects.equals(name, topic.name);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = topicId != null ? topicId.hashCode() : 0;
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
     }
 }

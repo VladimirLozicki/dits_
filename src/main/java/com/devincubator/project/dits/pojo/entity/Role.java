@@ -1,11 +1,10 @@
 package com.devincubator.project.dits.pojo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
-/**
- * @author roma.zamoiski@gmail.com
- */
 @Entity
+@Table(name = "role")
 public class Role {
 
     @Id
@@ -14,44 +13,63 @@ public class Role {
     private Long roleId;
 
     @Column
-    private byte[] user;
+    private Integer user;
 
     @Column
-    private byte[] admin;
+    private Integer admin;
 
     @Column
-    private byte[] tutor;
+    private Integer tutor;
+
+    @OneToMany(mappedBy = "role", fetch=FetchType.EAGER)
+    private List<User> users;
 
     public Role() {
     }
 
-    public Role(byte[] user, byte[] admin, byte[] tutor) {
+    public Role(Integer user, Integer admin, Integer tutor) {
         this.user = user;
         this.admin = admin;
         this.tutor = tutor;
     }
 
-    public byte[] getUser() {
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> userConnection) {
+        this.users = userConnection;
+    }
+
+    public Integer getUser() {
         return user;
     }
 
-    public void setUser(byte[] user) {
+    public void setUser(Integer user) {
         this.user = user;
     }
 
-    public byte[] getAdmin() {
+    public Integer getAdmin() {
         return admin;
     }
 
-    public void setAdmin(byte[] admin) {
+    public void setAdmin(Integer admin) {
         this.admin = admin;
     }
 
-    public byte[] getTutor() {
+    public Integer getTutor() {
         return tutor;
     }
 
-    public void setTutor(byte[] tutor) {
+    public void setTutor(Integer tutor) {
         this.tutor = tutor;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 }

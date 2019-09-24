@@ -3,10 +3,8 @@ package com.devincubator.project.dits.pojo.entity;
 import javax.persistence.*;
 import java.sql.Date;
 
-/**
- * @author roma.zamoiski@gmail.com
- */
 @Entity
+@Table(name = "statistic")
 public class Statistic {
 
     @Id
@@ -18,18 +16,20 @@ public class Statistic {
     private Date date;
 
     @Column
-    private Boolean correct;
+    private Integer correct;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "questionId")
     private Question question;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
     private User user;
 
     public Statistic() {
     }
 
-    public Statistic(Date date, Boolean correct, Question question, User user) {
+    public Statistic(Date date, Integer correct, Question question, User user) {
         this.date = date;
         this.correct = correct;
         this.question = question;
@@ -44,11 +44,11 @@ public class Statistic {
         this.date = date;
     }
 
-    public Boolean getCorrect() {
+    public Integer getCorrect() {
         return correct;
     }
 
-    public void setCorrect(Boolean correct) {
+    public void setCorrect(Integer correct) {
         this.correct = correct;
     }
 

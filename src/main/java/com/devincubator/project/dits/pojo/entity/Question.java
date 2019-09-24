@@ -1,10 +1,8 @@
 package com.devincubator.project.dits.pojo.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
-/**
- * @author roma.zamoiski@gmail.com
- */
 @Entity
 public class Question {
 
@@ -16,8 +14,18 @@ public class Question {
     @Column
     private String description;
 
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "testId")
     private Test test;
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    private List<Answer> answer;
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    private List<Statistic> statistics;
+
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    private List<Literature> literature;
 
     public Question() {
     }
@@ -25,6 +33,14 @@ public class Question {
     public Question(String description, Test test) {
         this.description = description;
         this.test = test;
+    }
+
+    public List<Answer> getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(List<Answer> answer) {
+        this.answer = answer;
     }
 
     public String getDescription() {
@@ -41,5 +57,21 @@ public class Question {
 
     public void setTest(Test test) {
         this.test = test;
+    }
+
+    public List<Statistic> getStatistics() {
+        return statistics;
+    }
+
+    public void setStatistics(List<Statistic> statistics) {
+        this.statistics = statistics;
+    }
+
+    public List<Literature> getLiterature() {
+        return literature;
+    }
+
+    public void setLiterature(List<Literature> literature) {
+        this.literature = literature;
     }
 }
