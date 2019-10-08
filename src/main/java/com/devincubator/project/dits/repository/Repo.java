@@ -1,42 +1,32 @@
 package com.devincubator.project.dits.repository;
 
-import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
 public interface Repo<T> {
 
-    default void create(T t, Session session){
 
-        session.beginTransaction();
-        session.save(t);
-        session
-                .getTransaction()
-                .commit();
-        session.close();
+    SessionFactory getBeanToBeAutowired();
+
+    default void create(T t){
+        getBeanToBeAutowired().getCurrentSession()
+                .saveOrUpdate(t);
     }
 
-    default void update(T t, Session session){
+    default void update(T t, SessionFactory sessionFactory){
 
-        session.beginTransaction();
-        session.update(t);
-        session
-                .getTransaction()
-                .commit();
-        session.close();
+        sessionFactory.getCurrentSession()
+                .update(t);
     }
 
-    default void delete(T t, Session session){
+    default void delete(T t, SessionFactory sessionFactory){
 
-        session.beginTransaction();
-        session.delete(t);
-        session
-                .getTransaction()
-                .commit();
-        session.close();
+        sessionFactory.getCurrentSession()
+                .delete(t);
     }
 
-    List<T> read(Session session);
+    List<T> read();
 
 
 }

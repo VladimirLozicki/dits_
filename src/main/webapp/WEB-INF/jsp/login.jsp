@@ -20,8 +20,7 @@
 				<img src="resources/images/devincpicture.png" alt="incubating">
 			</div>
 			<div class="login-form">
-				<c:url value="/j_spring_security_check" var="loginUrl"/>
-				<form action="${loginUrl}" method="post">
+				<form action="login" method="post">
 					<input class="login-field" type="text" name="j_username" placeholder="Логин"><br>
 					<input class="password-field" type="password" name="j_password" placeholder="Пароль"><br>
 					<input class="submit-button" type="submit" value="Войти">

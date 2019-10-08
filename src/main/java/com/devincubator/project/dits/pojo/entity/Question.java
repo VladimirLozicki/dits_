@@ -1,5 +1,8 @@
 package com.devincubator.project.dits.pojo.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,7 +10,8 @@ import java.util.List;
 public class Question {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="purchase_seq")
+    @SequenceGenerator(name="purchase_seq", sequenceName="PURCHASE_SEQ")
     @Column
     private Long questionId;
 
@@ -19,12 +23,15 @@ public class Question {
     private Test test;
 
     @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Answer> answer;
 
     @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Statistic> statistics;
 
     @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Literature> literature;
 
     public Question() {

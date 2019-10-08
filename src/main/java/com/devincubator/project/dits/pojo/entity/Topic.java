@@ -2,13 +2,13 @@ package com.devincubator.project.dits.pojo.entity;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 public class Topic {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="purchase_seq")
+    @SequenceGenerator(name="purchase_seq", sequenceName="PURCHASE_SEQ")
     @Column
     private Long topicId;
 

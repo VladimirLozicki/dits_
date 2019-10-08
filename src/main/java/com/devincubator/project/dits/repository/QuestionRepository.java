@@ -1,8 +1,9 @@
 package com.devincubator.project.dits.repository;
 
-import com.devincubator.project.dits.repository.query.Query;
 import com.devincubator.project.dits.pojo.entity.Question;
-import org.hibernate.Session;
+import com.devincubator.project.dits.repository.query.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,16 +11,18 @@ import java.util.List;
 @Repository
 public class QuestionRepository implements Repo<Question> {
 
-    //Abstrcat Repo
-//    public QuestionRepository() {
-//        super(QuestionRepository.class);
-//    }
+    @Autowired
+    SessionFactory sessionFactory;
 
     @Override
-    public List<Question> read(Session session) {
+    public SessionFactory getBeanToBeAutowired() {
+        return sessionFactory;
+    }
 
-        session.beginTransaction();
-        return session
+    @Override
+    public List<Question> read() {
+
+        return sessionFactory.getCurrentSession()
                 .createQuery(Query.SELECT_QUESTION.getQuery(), Question.class)
                 .list();
     }

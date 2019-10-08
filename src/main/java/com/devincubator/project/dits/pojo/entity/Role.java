@@ -8,7 +8,8 @@ import java.util.List;
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="purchase_seq")
+    @SequenceGenerator(name="purchase_seq", sequenceName="PURCHASE_SEQ")
     @Column
     private Long roleId;
 
