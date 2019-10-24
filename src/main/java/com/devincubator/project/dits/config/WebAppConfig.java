@@ -41,29 +41,24 @@ public class WebAppConfig {
     @Bean
     public BasicDataSource dataSource(){
         BasicDataSource dataSource = new BasicDataSource();
-
         dataSource.setUrl(environment.getProperty("database.url"));
         dataSource.setUsername(environment.getProperty("database.username"));
         dataSource.setPassword(environment.getProperty("database.password"));
         dataSource.setDriverClassName(environment.getProperty("database.driverClassName"));
-
         return dataSource;
     }
 
     @Bean
     public LocalSessionFactoryBean sessionFactoryBean(@Autowired DataSource dataSource){
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
-
         localSessionFactoryBean.setDataSource(dataSource);
         localSessionFactoryBean.setPackagesToScan("com.devincubator.project.dits.pojo");
         localSessionFactoryBean.setHibernateProperties(createHibernateProperties());
-
         return localSessionFactoryBean;
     }
 
     private Properties createHibernateProperties() {
         Properties properties = new Properties();
-
         properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.showSql", environment.getProperty("hibernate.showSql"));
@@ -75,7 +70,6 @@ public class WebAppConfig {
     public HibernateTransactionManager transactionManager(@Autowired SessionFactory sessionFactory){
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory);
-
         return transactionManager;
     }
 
