@@ -26,9 +26,12 @@ import java.util.Properties;
 @PropertySource("classpath:hibernate.properties")
 public class WebAppConfig {
 
+    private Environment environment;
 
     @Autowired
-    Environment environment;
+    public void setEnvironment(Environment environment) {
+        this.environment = environment;
+    }
 
     @Bean
     ViewResolver viewResolver() {
@@ -39,7 +42,7 @@ public class WebAppConfig {
     }
 
     @Bean
-    public BasicDataSource dataSource(){
+    public BasicDataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setUrl(environment.getProperty("database.url"));
         dataSource.setUsername(environment.getProperty("database.username"));
@@ -49,7 +52,7 @@ public class WebAppConfig {
     }
 
     @Bean
-    public LocalSessionFactoryBean sessionFactoryBean(@Autowired DataSource dataSource){
+    public LocalSessionFactoryBean sessionFactoryBean(@Autowired DataSource dataSource) {
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(dataSource);
         localSessionFactoryBean.setPackagesToScan("com.devincubator.project.dits.pojo");
@@ -57,20 +60,19 @@ public class WebAppConfig {
         return localSessionFactoryBean;
     }
 
+    @Bean
+    public HibernateTransactionManager transactionManager(@Autowired SessionFactory sessionFactory) {
+        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+        transactionManager.setSessionFactory(sessionFactory);
+        return transactionManager;
+    }
+
     private Properties createHibernateProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         properties.put("hibernate.showSql", environment.getProperty("hibernate.showSql"));
-
         return properties;
-    }
-
-    @Bean
-    public HibernateTransactionManager transactionManager(@Autowired SessionFactory sessionFactory){
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-        transactionManager.setSessionFactory(sessionFactory);
-        return transactionManager;
     }
 
 }

@@ -21,7 +21,6 @@ public class TopicRepository implements Repo<Topic> {
 
     @Override
     public List<Topic> read() {
-
         return sessionFactory.getCurrentSession()
                 .createQuery(Query.SELECT_TOPIC.getQuery(), Topic.class)
                 .list();

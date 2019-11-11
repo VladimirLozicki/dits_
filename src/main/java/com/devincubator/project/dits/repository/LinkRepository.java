@@ -21,7 +21,6 @@ public class LinkRepository implements Repo<Link> {
 
     @Override
     public List<Link> read() {
-
         return sessionFactory.getCurrentSession()
                 .createQuery(Query.SELECT_LINK.getQuery(), Link.class)
                 .list();

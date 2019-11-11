@@ -21,7 +21,6 @@ public class TestRepository implements Repo<Test> {
 
     @Override
     public List<Test> read() {
-
         return sessionFactory.getCurrentSession()
                 .createQuery(Query.SELECT_TEST.getQuery(), Test.class)
                 .list();

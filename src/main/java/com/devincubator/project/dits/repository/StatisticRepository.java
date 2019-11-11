@@ -21,7 +21,6 @@ public class StatisticRepository implements Repo<Statistic> {
 
     @Override
     public List<Statistic> read() {
-
         return sessionFactory.getCurrentSession()
                 .createQuery(Query.SELECT_STATISTIC.getQuery(), Statistic.class)
                 .list();

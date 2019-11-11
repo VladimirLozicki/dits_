@@ -1,4 +1,4 @@
 /.idea
 /target
 /logs
-DITS.iml
+*.iml

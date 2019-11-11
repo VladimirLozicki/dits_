@@ -20,7 +20,6 @@ public enum Query {
     SELECT_TEST("from Test t"),
 
     SELECT_TOPIC("from Topic t"),
-
     SELECT_USER("from User u"),
     SELECT_USER_BY_LOGIN("from User u where u.login = :login"),
     SELECT_USER_BY_LOGIN_AND_PASSWORD("select u from User where u.login = :login and password = :password");

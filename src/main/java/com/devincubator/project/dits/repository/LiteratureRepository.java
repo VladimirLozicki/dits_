@@ -21,7 +21,6 @@ public class LiteratureRepository implements Repo<Literature> {
 
     @Override
     public List<Literature> read() {
-
         return sessionFactory.getCurrentSession()
                 .createQuery(Query.SELECT_LITERATURE.getQuery(), Literature.class)
                 .list();

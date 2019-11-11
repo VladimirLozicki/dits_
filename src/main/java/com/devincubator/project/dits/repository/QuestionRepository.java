@@ -21,7 +21,6 @@ public class QuestionRepository implements Repo<Question> {
 
     @Override
     public List<Question> read() {
-
         return sessionFactory.getCurrentSession()
                 .createQuery(Query.SELECT_QUESTION.getQuery(), Question.class)
                 .list();

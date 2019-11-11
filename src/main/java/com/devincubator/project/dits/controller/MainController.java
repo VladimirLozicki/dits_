@@ -4,42 +4,32 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@org.springframework.stereotype.Controller
-public class Controller {
+@Controller
+public class MainController {
 
-    @GetMapping(value = {"/", "/home"})
-    public String homePage(ModelMap model) {
+    @GetMapping(value = "/admin")
+    public String adminPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
-        return "user/one";
+        return "tutor_page";
     }
 
-    //    @GetMapping(value = "/admin")
-//    public String adminPage(ModelMap model) {
-//        model.addAttribute("user", getPrincipal());
-//        return "admin";
-//    }
-//
-//    @GetMapping(value = "/db")
-//    public String dbaPage(ModelMap model) {
-//        model.addAttribute("user", getPrincipal());
-//        return "dba";
-//    }
-
-    @GetMapping(value = {"/two"})
-    public String twoPage() {
-        return "user/two";
+    @GetMapping(value = "/db")
+    public String dbaPage(ModelMap model) {
+        model.addAttribute("user", getPrincipal());
+        return "test_statistic";
     }
 
     @GetMapping(value = "/Access_Denied")
     public String accessDeniedPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
-        return "accessDenied";
+        return "test_statistic";
     }
 
     @GetMapping(value = "/login")
@@ -56,7 +46,7 @@ public class Controller {
         return "redirect:/login?logout";
     }
 
-    private String getPrincipal() {
+    static String getPrincipal() {
         String userName = null;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

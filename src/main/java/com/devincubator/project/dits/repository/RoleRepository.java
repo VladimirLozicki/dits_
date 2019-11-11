@@ -21,9 +21,7 @@ public class RoleRepository implements Repo<Role> {
     }
 
     @Override
-    @Transactional
     public List<Role> read() {
-
         return sessionFactory.getCurrentSession()
                 .createQuery(Query.SELECT_ROLE.getQuery(), Role.class)
                 .list();
