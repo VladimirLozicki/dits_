@@ -30,11 +30,11 @@
                     </div>
                 </c:if>
                 <div>
-                    <input type="text" class="login-field" id="username" name="ssoId" placeholder="Логин" required>
+                    <input type="text" class="login-field" id="username" name="ssoId" placeholder="Логин"  value="vladimir" required>
                 </div>
                 <div>
                     <input type="password" class="password-field" id="password" name="password" placeholder="Пароль"
-                           required>
+                       value="12345"    required>
                 </div>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <input type="submit" class="submit-button" value="Войти">

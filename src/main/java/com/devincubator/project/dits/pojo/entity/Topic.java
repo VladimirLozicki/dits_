@@ -2,6 +2,7 @@ package com.devincubator.project.dits.pojo.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Topic {
@@ -51,5 +52,21 @@ public class Topic {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Topic topic = (Topic) o;
+        return Objects.equals(topicId, topic.topicId) &&
+                Objects.equals(description, topic.description) &&
+                Objects.equals(name, topic.name) &&
+                Objects.equals(tests, topic.tests);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(topicId, description, name, tests);
     }
 }

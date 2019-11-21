@@ -2,6 +2,7 @@ package com.devincubator.project.dits.pojo.entity;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Test {
@@ -64,5 +65,33 @@ public class Test {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Test test = (Test) o;
+        return Objects.equals(testId, test.testId) &&
+                Objects.equals(name, test.name) &&
+                Objects.equals(description, test.description) &&
+                Objects.equals(topic, test.topic) &&
+                Objects.equals(questions, test.questions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(testId, name, description, topic, questions);
+    }
+
+    @Override
+    public String toString() {
+        return "Test{" +
+                "testId=" + testId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", topic=" + topic +
+                ", questions=" + questions +
+                '}';
     }
 }

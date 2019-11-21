@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 
@@ -30,8 +29,6 @@ public class PlanetTest extends AbstractTestNGSpringContextTests {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-
-    @Ignore
     @Test
     public void testGId() {
         userService.create(registerUser());
@@ -52,21 +49,23 @@ public class PlanetTest extends AbstractTestNGSpringContextTests {
         return "";
     }
 
-     User registerUser() {
+    User registerUser() {
         Role role = new Role();
         role.setUser(1);
-         role.setTutor(0);
-         role.setAdmin(0);
+        role.setTutor(0);
+        role.setAdmin(0);
         User user = new User();
         user.setRole(role);
         user.setLogin("vladimir");
+        user.setFirstName("lozickiy");
+        user.setLastName("valerevich");
         String password = "12345";
         String encryptedPassword = passwordEncoder.encode(password);
         user.setPassword(encryptedPassword);
         return user;
     }
 
-     User registerAdmin() {
+    User registerAdmin() {
         Role role = new Role();
         role.setAdmin(1);
         role.setTutor(0);
@@ -80,11 +79,11 @@ public class PlanetTest extends AbstractTestNGSpringContextTests {
         return user;
     }
 
-     User registerDBA() {
+    User registerDBA() {
         Role role = new Role();
         role.setTutor(1);
-         role.setAdmin(0);
-         role.setUser(0);
+        role.setAdmin(0);
+        role.setUser(0);
         User user = new User();
         user.setRole(role);
         user.setLogin("roma");
