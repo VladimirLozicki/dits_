@@ -15,7 +15,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.mvc>5.2.0.RELEASE</spring.mvc>
-        <spring.security>5.1.6.RELEASE</spring.security>
+        <spring.security>5.3.3.RELEASE</spring.security>
         <hibernate>5.4.7.Final</hibernate>
         <logging.log4j>2.11.2</logging.log4j>
         <testng>7.0.0</testng>
