@@ -17,7 +17,7 @@
         <spring.mvc>5.2.0.RELEASE</spring.mvc>
         <spring.security>5.1.6.RELEASE</spring.security>
         <hibernate>5.4.7.Final</hibernate>
-        <logging.log4j>2.11.2</logging.log4j>
+        <logging.log4j>2.16.0</logging.log4j>
         <testng>7.0.0</testng>
         <mysql-connector-java>5.1.47</mysql-connector-java>
         <jstl>1.2</jstl>
