@@ -19,7 +19,7 @@
         <hibernate>5.4.7.Final</hibernate>
         <logging.log4j>2.11.2</logging.log4j>
         <testng>7.0.0</testng>
-        <mysql-connector-java>5.1.47</mysql-connector-java>
+        <mysql-connector-java>8.0.28</mysql-connector-java>
         <jstl>1.2</jstl>
     </properties>
 
